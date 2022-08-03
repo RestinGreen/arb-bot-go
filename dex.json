@@ -1,236 +1,275 @@
 {
     "SUSHISWAP": {
+        "name": "sushiswap",
         "router": "0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506",
         "factory": "0xc35dadb65012ec5796536bd9864ed8773abc74c4",
-        "salt": "0xe18a34eb0e04b04f7a0ac29a6e80748dca96319b42c54d679cb821dca90c6303",
+        "salt": "e18a34eb0e04b04f7a0ac29a6e80748dca96319b42c54d679cb821dca90c6303",
         "dexType": "UniV2"
     },
     "QUICKSWAP": {
+        "name": "QUICKSWAP",
         "router": "0xa5E0829CaCEd8fFDD4De3c43696c57F7D7A678ff",
         "dexType": "UniV2",
         "factory": "0x5757371414417b8c6caad45baef941abc7d3ab32",
-        "initHash": "0x96e8ac4277198ff8b6f785478aa9a39f403cb768dd02cbee326c3e7da348845f"
+        "salt": "96e8ac4277198ff8b6f785478aa9a39f403cb768dd02cbee326c3e7da348845f"
     },
     "APESWAP": {
+        "name": "APESWAP",
         "router": "0xC0788A3aD43d79aa53B09c2EaCc313A787d1d607",
         "dexType": "UniV2",
         "factory": "0xcf083be4164828f00cae704ec15a36d711491284",
-        "initHash": "0x511f0f358fe530cda0859ec20becf391718fdf5a329be02f4c95361f3d6a42d8"
+        "salt": "511f0f358fe530cda0859ec20becf391718fdf5a329be02f4c95361f3d6a42d8"
     },
     "JETSWAP": {
+        "name": "JETSWAP",
         "router": "0x5C6EC38fb0e2609672BDf628B1fD605A523E5923",
         "dexType": "UniV2",
         "factory": "0x668ad0ed2622c62e24f0d5ab6b6ac1b9d2cd4ac7",
-        "initHash": "0x505c843b83f01afef714149e8b174427d552e1aca4834b4f9b4b525f426ff3c6"
+        "salt": "505c843b83f01afef714149e8b174427d552e1aca4834b4f9b4b525f426ff3c6"
     },
     "POLYCAT": {
+        "name": "POLYCAT",
         "router": "0x94930a328162957FF1dd48900aF67B5439336cBD",
         "dexType": "UniV2",
         "factory": "0x477ce834ae6b7ab003cce4bc4d8697763ff456fa",
-        "initHash": "0x3cad6f9e70e13835b4f07e5dd475f25a109450b22811d0437da51e66c161255a"
+        "salt": "3cad6f9e70e13835b4f07e5dd475f25a109450b22811d0437da51e66c161255a"
     },
     "WAULTSWAP": {
+        "name": "WAULTSWAP",
         "router": "0x3a1D87f206D12415f5b0A33E786967680AAb4f6d",
         "dexType": "UniV2",
         "factory": "0xa98ea6356a316b44bf710d5f9b6b4ea0081409ef",
-        "initHash": "0x1cdc2246d318ab84d8bc7ae2a3d81c235f3db4e113f4c6fdc1e2211a9291be47"
+        "salt": "1cdc2246d318ab84d8bc7ae2a3d81c235f3db4e113f4c6fdc1e2211a9291be47"
     },
     "DFYN_NETWORK": {
+        "name": "DFYN_NETWORK",
         "router": "0xA102072A4C07F06EC3B4900FDC4C7B80b6c57429",
         "dexType": "UniV2",
         "factory": "0xe7fb3e833efe5f9c441105eb65ef8b261266423b",
-        "initHash": "0xf187ed688403aa4f7acfada758d8d53698753b998a3071b06f1b777f4330eaf3"
+        "salt": "f187ed688403aa4f7acfada758d8d53698753b998a3071b06f1b777f4330eaf3"
     },
     "UNNAMED_1": {
+        "name": "UNNAMED_1",
         "router": "0x4237a813604bD6815430d55141EA2C24D4543e44",
         "dexType": "UniV2",
         "factory": "0x1B44bf43111A26206F9735319A0c438dd1c030b2",
-        "initHash": "0x0f316c4111d246eee4e7ca6ffd02ca779ad3cd7a0da1f59a95878ac6b6348ea2"
+        "salt": "0f316c4111d246eee4e7ca6ffd02ca779ad3cd7a0da1f59a95878ac6b6348ea2"
     },
     "UNNAMED_2": {
+        "name": "UNNAMED_2",
         "router": "0xfBE675868f00aE8145d6236232b11C44d910B24a",
         "dexType": "UniV2",
         "factory": "0x9476D561622E905f20613f08fa796EA2562DFbB0",
-        "initHash": "0xaf3eb98e7716037cc5e1077f9c7f08e52b2a96d75bc699c46f906c4f84626d8a"
+        "salt": "af3eb98e7716037cc5e1077f9c7f08e52b2a96d75bc699c46f906c4f84626d8a"
     },
     "VULCAN": {
+        "name": "VULCAN",
         "router": "0xfE0E493564DB7Ae23a7b6Ea07F2C633Ee8f25f22",
         "dexType": "UniV2",
         "factory": "0x293f45b6F9751316672da58AE87447d712AF85D7",
-        "initHash": "0x6ef78d7709026f20d23d9a4f267d7350f69949442295ac090da495c5696bcafe"
+        "salt": "6ef78d7709026f20d23d9a4f267d7350f69949442295ac090da495c5696bcafe"
     },
     "DEX": {
+        "name": "name",
         "router": "0xdBe30E8742fBc44499EB31A19814429CECeFFaA0",
         "dexType": "UniV2",
         "factory": "0x56CfC115e04dFCdA3ad47eAE1db86f70C1F8D8A5",
-        "initHash": "0xa2761b72dd129eced75b3a0f354f8a63736401c7f01e0e6e57d18e09b330f133"
+        "salt": "a2761b72dd129eced75b3a0f354f8a63736401c7f01e0e6e57d18e09b330f133"
     },
     "UNNAMED_3": {
+        "name": "UNNAMED_3",
         "router": "0x93bcDc45f7e62f89a8e901DC4A0E2c6C427D9F25",
         "dexType": "UniV2",
         "factory": "0x800b052609c355cA8103E06F022aA30647eAd60a",
-        "initHash": "0x499154cad90a3563f914a25c3710ed01b9a43b8471a35ba8a66a056f37638542"
+        "salt": "499154cad90a3563f914a25c3710ed01b9a43b8471a35ba8a66a056f37638542"
     },
     "GRAVIS": {
+        "name": "GRAVIS",
         "router": "0x711a119dCee9d076e9f4d680C6c8FD694DAaF68D",
         "dexType": "UniV2",
         "factory": "0x17c1D25D5a2d833c266639De5Fbe8896bDBeB234",
-        "initHash": "0x4d103b6c779c43f69ce77721bf10af0e9351d8676f0899ab80ea833e6d6db973"
+        "salt": "4d103b6c779c43f69ce77721bf10af0e9351d8676f0899ab80ea833e6d6db973"
     },
     "AURA": {
+        "name": "GRAVIS",
         "router": "0x09Fd8B8ed6E30e583379Dc73b9261dF5E1A28b6F",
         "dexType": "UniV2",
         "factory": "0x015DE3ec460869eb5ceAe4224Dc7112ac0a39303",
-        "initHash": "0x95fdd2079c005e7643dcf9411501657242ed5023f2115be16f29fbfa7894adb5"
+        "salt": "95fdd2079c005e7643dcf9411501657242ed5023f2115be16f29fbfa7894adb5"
     },
     "ELK": {
+        "name": "ELK",
         "router": "0xf38a7A7Ac2D745E2204c13F824c00139DF831FFf",
         "dexType": "UniV2",
         "factory": "0xE3BD06c7ac7E1CeB17BdD2E5BA83E40D1515AF2a",
-        "initHash": "0x84845e7ccb283dec564acfcd3d9287a491dec6d675705545a2ab8be22ad78f31"
+        "salt": "84845e7ccb283dec564acfcd3d9287a491dec6d675705545a2ab8be22ad78f31"
     },
     "DINOSWAP": {
+        "name": "DINOSWAP",
         "router": "0x6AC823102CB347e1f5925C634B80a98A3aee7E03",
         "dexType": "UniV2",
         "factory": "0x624Ccf581371F8A4493e6AbDE46412002555A1b6",
-        "initHash": "0x6a733b8ac43b9d683a3035801788767d1b63c7998154ab1d6379b011dc98a9b8"
+        "salt": "6a733b8ac43b9d683a3035801788767d1b63c7998154ab1d6379b011dc98a9b8"
     },
     "GREENHOUSE": {
+        "name": "GREENHOUSE",
         "router": "0x324Af1555Ea2b98114eCb852ed67c2B5821b455b",
         "dexType": "UniV2",
         "factory": "0x75ED971834B0e176A053AC959D9Cf77F0B4c89D0",
-        "initHash": "0xc9e8436955a85a2d7b01c9c3d63e0f208f26e44f0f39b712d06db3c7572e7992"
+        "salt": "c9e8436955a85a2d7b01c9c3d63e0f208f26e44f0f39b712d06db3c7572e7992"
     },
     "DXSWAP": {
+        "name": "DXSWAP",
         "router": "0xaD340d0CD0B117B0140671E7cB39770e7675C848",
         "dexType": "UniV2",
         "factory": "0x03DAa61d8007443a6584e3d8f85105096543C19c",
-        "initHash": "0xae81bbc68f315fbbf7617eb881349af83b1e95241f616966e1e0583ecd0793fe"
+        "salt": "ae81bbc68f315fbbf7617eb881349af83b1e95241f616966e1e0583ecd0793fe"
     },
     "FRAXSWAP": {
+        "name": "FRAXSWAP",
         "router": "0x9bc2152fD37b196C0Ff3C16f5533767c9A983971",
         "dexType": "UniV2",
         "factory": "0xc2544A32872A91F4A553b404C6950e89De901fdb",
-        "initHash": "0x56d8137e6dc7681d67b2c0b0ecb99a25da51343f540d36e93a2d172fea4597f7"
+        "salt": "56d8137e6dc7681d67b2c0b0ecb99a25da51343f540d36e93a2d172fea4597f7"
     },
     "UNNAMED_4": {
+        "name": "UNNAMED_4",
         "router": "0xAf877420786516FC6692372c209e0056169eebAf",
         "dexType": "UniV2",
         "factory": "0xB581D0A3b7Ea5cDc029260e989f768Ae167Ef39B",
-        "initHash": "0x3eef69365a159891ca18b545ccaf0d6aca9b22c988b8deb7a3e4fa2fc2418596"
+        "salt": "3eef69365a159891ca18b545ccaf0d6aca9b22c988b8deb7a3e4fa2fc2418596"
     },
     "FESWAP": {
+        "name": "FESWAP",
         "router": "0x938B544Ce2AE40B6dE0Ab728a69c37A60159689A",
         "dexType": "UniV2",
         "factory": "0x91289e8150E20Ff7CA8478dAd6DCC55D5c85Ac2D",
-        "initHash": "0x1b68a89c18551451d63580e66fda7aee3ccf09c7317f32b6747ff18b1173ad09"
+        "salt": "1b68a89c18551451d63580e66fda7aee3ccf09c7317f32b6747ff18b1173ad09"
     },
     "BOLTR": {
+        "name": "BOLTR",
         "router": "0x158d0b57Cc72509C3A9f476526887Ca8D7873fc4",
         "dexType": "UniV2",
         "factory": "0x442266042667407329e1729e6BeAD71424F42021",
-        "initHash": "0xb21ee34acc27831e3cdec6bc4d03346c7894329790dc113627cb903b2c61c070"
+        "salt": "b21ee34acc27831e3cdec6bc4d03346c7894329790dc113627cb903b2c61c070"
     },
     "UNNAMED_5": {
+        "name": "UNNAMED_5",
         "router": "0x57dE98135e8287F163c59cA4fF45f1341b680248",
         "dexType": "UniV2",
         "factory": "0x3ed75AfF4094d2Aaa38FaFCa64EF1C152ec1Cf20",
-        "initHash": "0x59f0dd0ec2453a509915048cac1608e1a52938dbcdf6b4960b21592e7996743a"
+        "salt": "59f0dd0ec2453a509915048cac1608e1a52938dbcdf6b4960b21592e7996743a"
     },
     "SAFESWAP": {
+        "name": "SAFESWAP",
         "router": "0xC02D3bbe950C4Bde21345c8c9Db58b7aF57C6668",
         "dexType": "UniV2",
         "factory": "0x5be44d6C5634161CdaDcC2bc35389325aa493e83",
-        "initHash": "0x58fc9539cd75d0d89841441f8663accbd9ad1135045be3b3d9028441eb1f20c4"
+        "salt": "58fc9539cd75d0d89841441f8663accbd9ad1135045be3b3d9028441eb1f20c4"
     },
     "UNNAMED_6": {
+        "name": "UNNAMED_6",
         "router": "0x751D346B92f3dce8813E6b6E248a11C534F4BdEa",
         "dexType": "UniV2",
         "factory": "0x84Ceb1675E369C703c76D023C58448EC135bBA10",
-        "initHash": "0x1ca4cf5a40745ee86969727917c8aeb8c6bca71e9495830ee9f911ee7547d604"
+        "salt": "1ca4cf5a40745ee86969727917c8aeb8c6bca71e9495830ee9f911ee7547d604"
     },
     "CAFE": {
+        "name": "CAFE",
         "router": "0x9055682E58C74fc8DdBFC55Ad2428aB1F96098Fc",
         "dexType": "UniV2",
         "factory": "0x5eDe3f4e7203Bf1F12d57aF1810448E5dB20f46C",
-        "initHash": "0x29fc590aa3fac813c6aed55e47ef28208a9ac3951233b0b657353007c68aca4d"
+        "salt": "29fc590aa3fac813c6aed55e47ef28208a9ac3951233b0b657353007c68aca4d"
     },
     "UNNAMED_7": {
+        "name": "UNNAMED_7",
         "router": "0xB6Feb0E3D88B9fb02EE4303c83aa74114CA46E56",
         "dexType": "UniV2",
         "factory": "0x073e2746ea0112fA184a049c607435829a09F5f6",
-        "initHash": "0xa9e68aad47fb1b56eda2137e6bebeefcbea13199d0bb5ecd074f9791bb790de7"
+        "salt": "a9e68aad47fb1b56eda2137e6bebeefcbea13199d0bb5ecd074f9791bb790de7"
     },
     "SMART": {
+        "name": "SMART",
         "router": "0x5f5acBd6c1c98D380AA12E614510BacF39Fbd531",
         "dexType": "UniV2",
         "factory": "0xbb0fa753Ae6Fddb78BB66D70Fc223e4a10D5F4d4",
-        "initHash": "0xa31ad43782e625a4800265c385650453e440e1bd3bd2bff9bc44386b6a229bc7"
+        "salt": "a31ad43782e625a4800265c385650453e440e1bd3bd2bff9bc44386b6a229bc7"
     },
     "UNIFI": {
+        "name": "UNIFI",
         "router": "0x03105929e82B1b8Fb6Eb76266CBd14C16a19D1f2",
         "dexType": "UniV2",
         "factory": "0x4FEE52912f81B78C3CdcB723728926ED6a893D27",
-        "initHash": "0xd0d4c4cd0848c93cb4fd1f498d7013ee6bfb25783ea21593d5834f5d250ece66"
+        "salt": "d0d4c4cd0848c93cb4fd1f498d7013ee6bfb25783ea21593d5834f5d250ece66"
     },
     "BAZOOKA": {
+        "name": "BAZOOKA",
         "router": "0x4c8BCe2E8ba31Cf39476874189F21EC5B0E6F1f0",
         "dexType": "UniV2",
         "factory": "0xb77185FEB2037DD4210f035E62d1193E879B849E",
-        "initHash": "0x3d12730a44b1d7f4ab6169e839eec60d58c9bb2b4d221e457e918774b43b2b92"
+        "salt": "3d12730a44b1d7f4ab6169e839eec60d58c9bb2b4d221e457e918774b43b2b92"
     },
     "EAGON": {
+        "name": "EAGON",
         "router": "0xA274258b2d68Dca40955A2D5E7bb67756D30dB3e",
         "dexType": "UniV2",
         "factory": "0xDbC781b6dA48e14ac6b34AFf1E16da2aC55B1358",
-        "initHash": "0x58ec54384d3e544bee629fe3e9fde4f096f2028a05e6ffdb2f8eeb24bce723a2"
+        "salt": "58ec54384d3e544bee629fe3e9fde4f096f2028a05e6ffdb2f8eeb24bce723a2"
     },
     "JAVA": {
+        "name": "JAVA",
         "router": "0xE7bBd79a6B07E061F4228db52cAC14c5647E641A",
         "dexType": "UniV2",
         "factory": "0x672353e4E674DDDD7319a4852e49F6E1D2aC6F18",
-        "initHash": "0xb1fbcd388ed9688f113a773cab172ea4a0d4155c400bb5653bb681d3e0396935"
+        "salt": "b1fbcd388ed9688f113a773cab172ea4a0d4155c400bb5653bb681d3e0396935"
     },
     "UNNAMED_8": {
+        "name": "UNNAMED_8",
         "router": "0x1eEDFf2A89e58c5fC4650C2de45DDA0964C3D343",
         "dexType": "UniV2",
         "factory": "0x0F10f5a1006F50eDeCd086cCD5704ade25709Ab2",
-        "initHash": "0xa45b6881271b3d945937baee765df5f40c309498fbe1fa5ec32505dce8ae790d"
+        "salt": "a45b6881271b3d945937baee765df5f40c309498fbe1fa5ec32505dce8ae790d"
     },
     "UNNAMED_9": {
+        "name": "UNNAMED_9",
         "router": "0xb3eB6c96083F8a3407A3C6a011E807e152448ba0",
         "dexType": "UniV2",
         "factory": "0x25CC30aF6B2957b0ED7cECA026fc204fdbE04E59",
-        "initHash": "0xebd829abaab5ec46b6f48ca061af178722304c61810018651266ca4d51e42bdc"
+        "salt": "ebd829abaab5ec46b6f48ca061af178722304c61810018651266ca4d51e42bdc"
     },
     "SWAP": {
+        "name": "SWAP",
         "router": "0xD0b5335BE74480F9303B88f5B55ACD676598882A",
         "dexType": "UniV2",
         "factory": "0xf08aE17C2A2728a788bb1b6C243fe7eb3E5bBaDc",
-        "initHash": "0x32890cd19dfef8a8745fd19c794ab655c6d1ee5ab4cd7af4e9312327ed7ee208"
+        "salt": "32890cd19dfef8a8745fd19c794ab655c6d1ee5ab4cd7af4e9312327ed7ee208"
     },
     "ZERO": {
+        "name": "ZERO",
         "router": "0x9894B0F28CcfA0F5c5F74EAC88f161110C5F8027",
         "dexType": "UniV2",
         "factory": "0x6FD98Cf211134081fe02F551D64Cf89671D5443b",
-        "initHash": "0x4b5b254233f8aba1e01c0538653d54036e3c9f7873daf99623bb358f1cf33188"
+        "salt": "4b5b254233f8aba1e01c0538653d54036e3c9f7873daf99623bb358f1cf33188"
     },
     "UNNAMED_10": {
+        "name": "UNNAMED_10",
         "router": "0x02e2aa08432b6FacAfa14f0639921189813F2fd6",
         "dexType": "UniV2",
         "factory": "0x9859d0a27316Db6aBaD61D65bD765f8FCdbafc34",
-        "initHash": "0x0f053e77f460abe1718c815f95e83961bd6a7b233c3d6b6efc9734c6debe129f"
+        "salt": "0f053e77f460abe1718c815f95e83961bd6a7b233c3d6b6efc9734c6debe129f"
     },
     "ZOLA": {
+        "name": "ZOLA",
         "router": "0x2fA91323d88DF750fA8b933e5325C484F5AD730A",
         "dexType": "UniV2",
         "factory": "0xB4cF380EAdcf29177b08058b6a9d84d4Ab38f00a",
-        "initHash": "0x595b3c45a8aeae8e48400912670d3bec111fbfb09de7064a212a9fff239ade7a"
+        "salt": "595b3c45a8aeae8e48400912670d3bec111fbfb09de7064a212a9fff239ade7a"
     },
     "UNNAMED_11": {
+        "name": "UNNAMED_11",
         "router": "0xd13943E247f01F1950f390880A4D4D696A8e9e63",
         "dexType": "UniV2",
         "factory": "0xf4b6d0C02DB823675FEc3f36fC5689991225ba50",
-        "initHash": "0xa3c2fb0e059fbfd4c9ed56888503de0fc070ad4fe3af4425cd3716f8967e826c"
+        "salt": "a3c2fb0e059fbfd4c9ed56888503de0fc070ad4fe3af4425cd3716f8967e826c"
     }
 }

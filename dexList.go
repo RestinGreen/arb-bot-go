@@ -17,6 +17,7 @@ const (
 )
 
 type DexData struct {
+	Name	string
 	Router  common.Address
 	Factory common.Address
 	Salt    string 
@@ -28,6 +29,7 @@ var dexList = map[string]DexData{}
 func readDexFromFile(jsonFileName string) {
 	
 	type TempDexData struct {
+		Name	string `json:"name"`
 		Router  string `json:"router"`
 		Factory string `json:"factory"`
 		Salt    string `json:"salt"`
@@ -58,6 +60,7 @@ func readDexFromFile(jsonFileName string) {
 			dexType = Curve
 		}
 		dexList[key] = DexData {
+			Name: value.Name,
 			Router: common.HexToAddress(value.Router),
 			Factory: common.HexToAddress(value.Factory),
 			Salt: value.Salt,
