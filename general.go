@@ -18,8 +18,13 @@ var (
 
 	ZERO *big.Int = big.NewInt(0)
 	ONE *big.Int = big.NewInt(1)
+	TEN *big.Int = big.NewInt(10)
 	b997 *big.Int = big.NewInt(997)
 	b1000 *big.Int = big.NewInt(1000)
+	bn1000_sqr *big.Int = big.NewInt(1_000_000)
+	bn997_sqr *big.Int = big.NewInt(997*997)
+	bn997000 *big.Int = big.NewInt(997_000)
+	bn150k *big.Int = big.NewInt(150_000)
 )
 
 func buildLog(log *string, text string) {
@@ -84,6 +89,44 @@ func decodeStorageSlot(storage string, tokenA common.Address, tokenB common.Addr
 	} else {
 		return r1, r0
 	}
+}
 
+func calculateOptimalInput(reserveIn1 *big.Int, reserveOut1 *big.Int, reserveIn2 *big.Int, reserveOut2 *big.Int) *big.Int{
+
+	sqrt := new(big.Int)
+	sqrt.Mul(reserveIn1, reserveIn2).Mul(sqrt, reserveOut1).Mul(sqrt, reserveOut2)
+	sqrt.Sqrt(sqrt)
+
+	nominator := new(big.Int)
+	nominator.Neg(nominator).Mul(nominator, reserveIn1).Mul(nominator, reserveIn2).Add(nominator, new(big.Int).Mul(bn997000, sqrt))
+
+	denominator := new(big.Int)
+	denominator.Mul(bn997000, reserveIn2).Add(denominator, new(big.Int).Mul(bn997_sqr, reserveOut1))
+
+	return new(big.Int).Div(nominator, denominator)
+
+}
+
+func calculateProfit(amountIn *big.Int, reserveIn1 *big.Int, reserveOut1 *big.Int, reserveIn2 *big.Int, reserveOut2 *big.Int) *big.Int {
+
+	nominator := new(big.Int)
+	nominator.Mul(bn997_sqr, reserveOut1).Mul(nominator, reserveOut2).Mul(nominator, amountIn)
+
+	denominator1 := new(big.Int)
+	denominator1.Mul(bn1000_sqr, reserveIn1).Mul(denominator1, reserveIn2)
+	denominator2 := new(big.Int)
+	denominator2.Mul(amountIn, bn997000).Mul(denominator2, reserveIn2)
+	denominator3 := new(big.Int)
+	denominator3.Mul(bn997_sqr, reserveOut1)
+
+	denominator := new(big.Int)
+	denominator.Add(denominator1, denominator2).Add(denominator, denominator3)
+
+	if denominator.Cmp(ZERO) == 0 {
+		return ZERO
+	} else {
+
+		return new(big.Int).Sub(new(big.Int).Div(nominator, denominator), amountIn)
+	}
 
 }

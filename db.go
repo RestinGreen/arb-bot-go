@@ -16,7 +16,7 @@ type Token struct {
 	Symbol	 	string
 	Address 	string
 	Blacklisted	bool
-	decimals	int
+	decimals	int64
 	Minimum		string
 
 }

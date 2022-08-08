@@ -69,6 +69,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+	fmt.Println("asd")
 
 	for tx := range txs {
 		
