@@ -1,0 +1,30 @@
+{
+    "DFYN_NETWORK": {
+        "name": "DFYN_NETWORK",
+        "router": "0xA102072A4C07F06EC3B4900FDC4C7B80b6c57429",
+        "dexType": "UniV2",
+        "factory": "0xe7fb3e833efe5f9c441105eb65ef8b261266423b",
+        "salt": "f187ed688403aa4f7acfada758d8d53698753b998a3071b06f1b777f4330eaf3"
+    },
+    "FRAXSWAP": {
+        "name": "FRAXSWAP",
+        "router": "0x9bc2152fD37b196C0Ff3C16f5533767c9A983971",
+        "dexType": "UniV2",
+        "factory": "0xc2544a32872a91f4a553b404c6950e89de901fdb",
+        "salt": "56d8137e6dc7681d67b2c0b0ecb99a25da51343f540d36e93a2d172fea4597f7"
+    },
+    "FESWAP": {
+        "name": "FESWAP",
+        "router": "0x938B544Ce2AE40B6dE0Ab728a69c37A60159689A",
+        "dexType": "UniV2",
+        "factory": "0x91289e8150E20Ff7CA8478dAd6DCC55D5c85Ac2D",
+        "salt": "1b68a89c18551451d63580e66fda7aee3ccf09c7317f32b6747ff18b1173ad09"
+    },
+    "GRAVIS": {
+        "name": "GRAVIS",
+        "router": "0x711a119dCee9d076e9f4d680C6c8FD694DAaF68D",
+        "dexType": "UniV2",
+        "factory": "0x17c1D25D5a2d833c266639De5Fbe8896bDBeB234",
+        "salt": "4d103b6c779c43f69ce77721bf10af0e9351d8676f0899ab80ea833e6d6db973"
+    }
+}

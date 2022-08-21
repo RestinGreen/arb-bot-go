@@ -104,6 +104,7 @@ func graphql() {
     data := []byte(`{"query":"{block{WETHUSDCSUSHISWAP:account(address:\"0x20f8a5947367e3b42fa2c2a5973d3780c505cd58\"){storage(slot:\"0x0000000000000000000000000000000000000000000000000000000000000008\")address}}}"}`)
 
 	body := bytes.NewBuffer(data)
+	// crate2(usdc, weth, dexList["SUSHISWAP"])
 
 	req, err := http.NewRequest("POST", "http://localhost:8545/graphql", body)
 	if err != nil {
@@ -141,11 +142,63 @@ func graphql() {
 	fmt.Println(time.Since(start))
 	fmt.Println(jsonMap["data"])
 }
+
+func gql() {
+	start := time.Now()
+	data := `{"query":"{block{`
+	data += `account(address:\"0xA0d6567bDaa90b996dACfe3140F16A45B9e66968\"){storage(slot:\"0x0000000000000000000000000000000000000000000000000000000000000008\")address}`
+	data += `}}"}`
+	bytesData := []byte(data)
+	
+	body := bytes.NewBuffer(bytesData)
+	
+	req, err := http.NewRequest("POST", "http://localhost:8545/graphql", body)
+	if err != nil {
+		panic(err)
+	}
+	req.Header.Set("Content-Type", "application/json")
+	resp, err := http.DefaultClient.Do(req)
+	fmt.Println(time.Since(start))
+	if err != nil {
+		panic(err)
+	}
+	defer resp.Body.Close()
+	
+	bdy, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		panic(err)
+	}
+	jsonStr := string(bdy)
+	
+	var jsonMap map[string]map[string]map[string]map[string]string
+	
+	json.Unmarshal([]byte(jsonStr), &jsonMap)
+	fmt.Println(jsonMap["data"]["block"])
+}
+
+func a() {
+	fmt.Println(1)
+}
+func b() {
+	fmt.Println(2)
+}
+func c() {
+	fmt.Println(3)
+}
 func main() {
 	
 	// usdc := common.HexToAddress("0x2791bca1f2de4661ed88a30c99a7a9449aa84174")
 	// weth := common.HexToAddress("0x7ceb23fd6bc0add59e62ac25578270cff1b9f619")
 
 	// crate2(usdc, weth, dexList["SUSHISWAP"])
+	// fmt.Println("\033[32m", "asd", "\033[0m")
+	// fmt.Println("sfaf")
+	go a()
+	go b()
+	go c()
 
+	for {}
+
+
+	
 }

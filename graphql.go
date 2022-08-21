@@ -3,23 +3,69 @@ package main
 import (
 	"bytes"
 	"encoding/json"
-	_"fmt"
 	"io/ioutil"
+	"math/big"
 	"net/http"
+	"strings"
 
 	"github.com/ethereum/go-ethereum/common"
 )
 
-func getDirectPairReserves(tokenA common.Address, tokenB common.Address, symbolA string, symbolB string) map[string]map[string]string {
+func getTriggerTxReserves(path []common.Address, dexData DexData) map[string]map[string]string {
 
 	data := `{"query":"{block{`
-
-	for key, value := range dexList {
-		data += symbolA+symbolB+key+`:account(address:\"`+crate2(tokenA, tokenB, value).Hex()+`\"){storage(slot:\"0x0000000000000000000000000000000000000000000000000000000000000008\")address}`
-		data += symbolA+symbolB+key+`:account(address:\"`+crate2(tokenB, tokenA, value).Hex()+`\"){storage(slot:\"0x0000000000000000000000000000000000000000000000000000000000000008\")address}`
+	for i := 0; i < len(path)-1; i++ {
+		tokenA := path[i].String()
+		tokenB := path[i+1].String()
+		data += tokenA[1:] + tokenB[1:] + `:account(address:\"`+crate2(path[i], path[i+1], dexData).Hex()+`\"){storage(slot:\"0x0000000000000000000000000000000000000000000000000000000000000008\")address}`
 	}
 	data += `}}"}`
+	return makeGQLCall(data)
+}
 
+func getDirectPairReserves(tokenA common.Address, tokenB common.Address, symbolA string, symbolB string) map[string]map[string]string {
+
+	gqlQueryString, ok := gqlQueryStrings[tokenA.String()+tokenB.String()]
+	if !ok {
+		// fmt.Println("not found in fetched query strings")
+
+		data := `{"query":"{block{`
+		allPairs := make(map[string]string)
+		goodPairs := make(map[string]string)
+		for dexName, dexData := range dexList {
+			newKey := strings.ToUpper(symbolA + "_" + symbolB + "_" + dexName)
+			line := newKey + `:account(address:\"`+crate2(tokenA, tokenB, dexData).Hex()+`\"){storage(slot:\"0x0000000000000000000000000000000000000000000000000000000000000008\")address}`
+			data += line
+			allPairs[newKey] = line
+		}
+		data += `}}"}`
+		result := makeGQLCall(data)
+		for pair, pairData := range(result) {
+			s := new(big.Int)
+			s.SetString(pairData["storage"][2:], 16)
+			if s.Cmp(ZERO) != 0 {
+				goodPairs[pair] = allPairs[pair]
+			}
+		}
+		goodGQLQueryString := `{"query":"{block{`
+		for _, sqlString := range(goodPairs) {
+			goodGQLQueryString += sqlString
+		}
+		goodGQLQueryString += `}}"}`
+
+		insertGQLQueryString(tokenA.String()+tokenB.String(), goodGQLQueryString)
+		return makeGQLCall(goodGQLQueryString)
+
+
+	} else {
+		// fmt.Println("found in fetched...")
+		return makeGQLCall(gqlQueryString.queryString)
+	}
+}
+
+
+
+func makeGQLCall(data string) map[string]map[string]string{
 	bytesData := []byte(data)
 	
 	body := bytes.NewBuffer(bytesData)
@@ -44,6 +90,5 @@ func getDirectPairReserves(tokenA common.Address, tokenB common.Address, symbolA
 	var jsonMap map[string]map[string]map[string]map[string]string
 	
 	json.Unmarshal([]byte(jsonStr), &jsonMap)
-
 	return jsonMap["data"]["block"]
 }

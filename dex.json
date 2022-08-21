@@ -41,13 +41,6 @@
         "factory": "0xa98ea6356a316b44bf710d5f9b6b4ea0081409ef",
         "salt": "1cdc2246d318ab84d8bc7ae2a3d81c235f3db4e113f4c6fdc1e2211a9291be47"
     },
-    "DFYN_NETWORK": {
-        "name": "DFYN_NETWORK",
-        "router": "0xA102072A4C07F06EC3B4900FDC4C7B80b6c57429",
-        "dexType": "UniV2",
-        "factory": "0xe7fb3e833efe5f9c441105eb65ef8b261266423b",
-        "salt": "f187ed688403aa4f7acfada758d8d53698753b998a3071b06f1b777f4330eaf3"
-    },
     "UNNAMED_1": {
         "name": "UNNAMED_1",
         "router": "0x4237a813604bD6815430d55141EA2C24D4543e44",
@@ -70,7 +63,7 @@
         "salt": "6ef78d7709026f20d23d9a4f267d7350f69949442295ac090da495c5696bcafe"
     },
     "DEX": {
-        "name": "name",
+        "name": "DEX",
         "router": "0xdBe30E8742fBc44499EB31A19814429CECeFFaA0",
         "dexType": "UniV2",
         "factory": "0x56CfC115e04dFCdA3ad47eAE1db86f70C1F8D8A5",
@@ -83,15 +76,8 @@
         "factory": "0x800b052609c355cA8103E06F022aA30647eAd60a",
         "salt": "499154cad90a3563f914a25c3710ed01b9a43b8471a35ba8a66a056f37638542"
     },
-    "GRAVIS": {
-        "name": "GRAVIS",
-        "router": "0x711a119dCee9d076e9f4d680C6c8FD694DAaF68D",
-        "dexType": "UniV2",
-        "factory": "0x17c1D25D5a2d833c266639De5Fbe8896bDBeB234",
-        "salt": "4d103b6c779c43f69ce77721bf10af0e9351d8676f0899ab80ea833e6d6db973"
-    },
     "AURA": {
-        "name": "GRAVIS",
+        "name": "AURA",
         "router": "0x09Fd8B8ed6E30e583379Dc73b9261dF5E1A28b6F",
         "dexType": "UniV2",
         "factory": "0x015DE3ec460869eb5ceAe4224Dc7112ac0a39303",
@@ -125,26 +111,13 @@
         "factory": "0x03DAa61d8007443a6584e3d8f85105096543C19c",
         "salt": "ae81bbc68f315fbbf7617eb881349af83b1e95241f616966e1e0583ecd0793fe"
     },
-    "FRAXSWAP": {
-        "name": "FRAXSWAP",
-        "router": "0x9bc2152fD37b196C0Ff3C16f5533767c9A983971",
-        "dexType": "UniV2",
-        "factory": "0xc2544A32872A91F4A553b404C6950e89De901fdb",
-        "salt": "56d8137e6dc7681d67b2c0b0ecb99a25da51343f540d36e93a2d172fea4597f7"
-    },
+
     "UNNAMED_4": {
         "name": "UNNAMED_4",
         "router": "0xAf877420786516FC6692372c209e0056169eebAf",
         "dexType": "UniV2",
         "factory": "0xB581D0A3b7Ea5cDc029260e989f768Ae167Ef39B",
         "salt": "3eef69365a159891ca18b545ccaf0d6aca9b22c988b8deb7a3e4fa2fc2418596"
-    },
-    "FESWAP": {
-        "name": "FESWAP",
-        "router": "0x938B544Ce2AE40B6dE0Ab728a69c37A60159689A",
-        "dexType": "UniV2",
-        "factory": "0x91289e8150E20Ff7CA8478dAd6DCC55D5c85Ac2D",
-        "salt": "1b68a89c18551451d63580e66fda7aee3ccf09c7317f32b6747ff18b1173ad09"
     },
     "BOLTR": {
         "name": "BOLTR",
