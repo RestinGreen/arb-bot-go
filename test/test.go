@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"math/big"
 	"net/http"
 	"os"
 	"time"
@@ -12,6 +13,16 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/crypto"
 )
+
+type UniV2Inputs struct {
+	AmountIn     *big.Int
+	AmountInMax  *big.Int
+	AmountOut    *big.Int
+	AmountOutMin *big.Int
+	Path         []common.Address
+	To           common.Address
+	Deadline     *big.Int
+}
 
 func sortAddtess(tokenA common.Address, tokenB common.Address) (common.Address, common.Address) {
 
@@ -42,19 +53,19 @@ const (
 )
 
 type DexData struct {
-	Name	string
+	Name    string
 	Router  common.Address
 	Factory common.Address
-	Salt    string 
+	Salt    string
 	DexType DexType
 }
 
 var dexList = map[string]DexData{}
 
 func readDexFromFile(jsonFileName string) {
-	
+
 	type TempDexData struct {
-		Name	string `json:"name"`
+		Name    string `json:"name"`
 		Router  string `json:"router"`
 		Factory string `json:"factory"`
 		Salt    string `json:"salt"`
@@ -74,7 +85,6 @@ func readDexFromFile(jsonFileName string) {
 	var temp map[string]TempDexData
 	json.Unmarshal([]byte(byteValue), &temp)
 
-
 	for key, value := range temp {
 		var dexType DexType
 		if value.DexType == "UniV2" {
@@ -84,11 +94,11 @@ func readDexFromFile(jsonFileName string) {
 		} else {
 			dexType = Curve
 		}
-		dexList[key] = DexData {
-			Name: value.Name,
-			Router: common.HexToAddress(value.Router),
+		dexList[key] = DexData{
+			Name:    value.Name,
+			Router:  common.HexToAddress(value.Router),
 			Factory: common.HexToAddress(value.Factory),
-			Salt: value.Salt,
+			Salt:    value.Salt,
 			DexType: dexType,
 		}
 	}
@@ -101,7 +111,7 @@ func init() {
 func graphql() {
 
 	start := time.Now()
-    data := []byte(`{"query":"{block{WETHUSDCSUSHISWAP:account(address:\"0x20f8a5947367e3b42fa2c2a5973d3780c505cd58\"){storage(slot:\"0x0000000000000000000000000000000000000000000000000000000000000008\")address}}}"}`)
+	data := []byte(`{"query":"{block{WETHUSDCSUSHISWAP:account(address:\"0x20f8a5947367e3b42fa2c2a5973d3780c505cd58\"){storage(slot:\"0x0000000000000000000000000000000000000000000000000000000000000008\")address}}}"}`)
 
 	body := bytes.NewBuffer(data)
 	// crate2(usdc, weth, dexList["SUSHISWAP"])
@@ -149,9 +159,9 @@ func gql() {
 	data += `account(address:\"0xA0d6567bDaa90b996dACfe3140F16A45B9e66968\"){storage(slot:\"0x0000000000000000000000000000000000000000000000000000000000000008\")address}`
 	data += `}}"}`
 	bytesData := []byte(data)
-	
+
 	body := bytes.NewBuffer(bytesData)
-	
+
 	req, err := http.NewRequest("POST", "http://localhost:8545/graphql", body)
 	if err != nil {
 		panic(err)
@@ -163,42 +173,38 @@ func gql() {
 		panic(err)
 	}
 	defer resp.Body.Close()
-	
+
 	bdy, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		panic(err)
 	}
 	jsonStr := string(bdy)
-	
+
 	var jsonMap map[string]map[string]map[string]map[string]string
-	
+
 	json.Unmarshal([]byte(jsonStr), &jsonMap)
 	fmt.Println(jsonMap["data"]["block"])
 }
 
-func a() {
-	fmt.Println(1)
+var uniV2ABIString string
+
+func readUniV2Router02(fileName string) {
+	fileBytes, err := os.ReadFile(fileName)
+	if err != nil {
+		panic(err)
+	}
+
+	uniV2ABIString = string(fileBytes)
 }
-func b() {
-	fmt.Println(2)
-}
-func c() {
-	fmt.Println(3)
+
+func t(x *uint64) {
+	*x = *x+1
 }
 func main() {
-	
-	// usdc := common.HexToAddress("0x2791bca1f2de4661ed88a30c99a7a9449aa84174")
-	// weth := common.HexToAddress("0x7ceb23fd6bc0add59e62ac25578270cff1b9f619")
 
-	// crate2(usdc, weth, dexList["SUSHISWAP"])
-	// fmt.Println("\033[32m", "asd", "\033[0m")
-	// fmt.Println("sfaf")
-	go a()
-	go b()
-	go c()
+	var x uint64
 
-	for {}
-
-
-	
+	x = 1
+	t(&x)
+	fmt.Println(x)
 }

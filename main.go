@@ -12,7 +12,6 @@ import (
 	"github.com/ethereum/go-ethereum/accounts/abi"
 	"github.com/ethereum/go-ethereum/core/types"
 	"github.com/ethereum/go-ethereum/ethclient/gethclient"
-	
 )
 
 func init() {
@@ -23,6 +22,8 @@ func init() {
 
 func cleanup() {
 	DB.Close()
+	baseClient.Close()
+	ethClient.Close()
 }
 
 func main() {
@@ -37,21 +38,17 @@ func main() {
 		os.Exit(1)
 	}()
 
+	prepareListening()
+
 	ctx := context.Background()
 	txs := make(chan *types.Transaction)
 
-	
-
 	subscriber := gethclient.New(baseClient)
-	
+
 	_, err := subscriber.SubscribePendingTransactions(ctx, txs)
 	if err != nil {
 		panic(err)
 	}
-	defer func() {
-		baseClient.Close()
-		ethClient.Close()
-	}()
 
 	uniV2Abi, err := abi.JSON(strings.NewReader(uniV2ABIString))
 	if err != nil {
@@ -60,10 +57,10 @@ func main() {
 
 	for tx := range txs {
 
-		for dex, data := range dexList {
+		for _, data := range dexList {
 			if tx.To() != nil && tx.To().Hash() == data.Router.Hash() {
 				log := "----------------------------------------------------------------------------------------\n"
-				buildLog(&log, dex + " swap")
+				// buildLog(&log, dex+" swap")
 				noticed := time.Now()
 				if len(tx.Data()) < 4 {
 					break

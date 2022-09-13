@@ -4,6 +4,7 @@ import (
 	"crypto/ecdsa"
 	"fmt"
 	"main/DoSimpleArb"
+	"main/ReservesFetcher"
 	"math/big"
 	"time"
 
@@ -14,12 +15,11 @@ import (
 )
 
 var (
-	wsEndpoint                    = ""
-	ipcEndpoint                   = ""
-	dexJson                       = ""
-	uniV2Json                     = ""
+	ipcEndpoint = ""
+	dexJson     = ""
+	uniV2Json   = ""
 	ethClient   *ethclient.Client
-	baseClient	*rpc.Client
+	baseClient  *rpc.Client
 
 	ZERO       *big.Int = big.NewInt(0)
 	ONE        *big.Int = big.NewInt(1)
@@ -36,16 +36,23 @@ var (
 	fromAddress2 common.Address
 	fromAddress3 common.Address
 	fromAddress4 common.Address
-	privateKey0  *ecdsa.PrivateKey
-	privateKey1  *ecdsa.PrivateKey
-	privateKey2  *ecdsa.PrivateKey
-	privateKey3  *ecdsa.PrivateKey
-	privateKey4  *ecdsa.PrivateKey
 
-	contract *DoSimpleArb.DoSimpleArb
+	privateKey0 *ecdsa.PrivateKey
+	privateKey1 *ecdsa.PrivateKey
+	privateKey2 *ecdsa.PrivateKey
+	privateKey3 *ecdsa.PrivateKey
+	privateKey4 *ecdsa.PrivateKey
+
+	nonce0 *big.Int
+	nonce1 *big.Int
+	nonce2 *big.Int
+	nonce3 *big.Int
+	nonce4 *big.Int
+
+	arbContract     *DoSimpleArb.DoSimpleArb
+	fetcherContract *ReservesFetcher.ReservesFetcher
 
 	chainID *big.Int = big.NewInt(137)
-
 )
 
 func buildLog(log *string, text string) {
@@ -84,7 +91,7 @@ func getAmountsIn(amountOut *big.Int, path []common.Address, reserves []PairRese
 }
 
 func getAmountOut(amountIn *big.Int, reserveIn *big.Int, reserveOut *big.Int) (*big.Int, bool) {
-	if reserveIn.Cmp(ZERO) <= 0 || reserveOut.Cmp(ZERO) <= 0 {
+	if reserveIn.Cmp(ZERO) <= 0 || reserveOut.Cmp(ZERO) <= 0 || amountIn.Cmp(ZERO) <= 0 {
 		return ZERO, false
 	}
 	amountInWithFee := new(big.Int).Mul(amountIn, b997)
@@ -106,7 +113,7 @@ func getAmountIn(amountOut *big.Int, reserveIn *big.Int, reserveOut *big.Int) *b
 	return result
 }
 
-func sortAddtess(tokenA common.Address, tokenB common.Address) (common.Address, common.Address) {
+func sortAddress(tokenA common.Address, tokenB common.Address) (common.Address, common.Address) {
 
 	if tokenA.Hash().Big().Cmp(tokenB.Hash().Big()) < 0 {
 		return tokenA, tokenB
@@ -115,9 +122,19 @@ func sortAddtess(tokenA common.Address, tokenB common.Address) (common.Address, 
 	}
 }
 
+func sortToken(tokenA Token, tokenB Token) (Token, Token) {
+	a, _ := new(big.Int).SetString(tokenA.Address[2:], 16)
+	b, _ := new(big.Int).SetString(tokenB.Address[2:], 16)
+	if a.Cmp(b) < 0 {
+		return tokenA, tokenB
+	} else {
+		return tokenB, tokenA
+	}
+}
+
 func crate2(tokenA common.Address, tokenB common.Address, data DexData) common.Address {
 
-	tA, tB := sortAddtess(tokenA, tokenB)
+	tA, tB := sortAddress(tokenA, tokenB)
 	ff := []byte{255}
 	ff = append(ff, data.Factory.Bytes()...)
 	ff = append(ff, crypto.Keccak256(append(tA.Bytes(), tB.Bytes()...))...)

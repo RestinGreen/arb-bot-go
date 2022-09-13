@@ -1,6 +1,6 @@
 {
     "SUSHISWAP": {
-        "name": "sushiswap",
+        "name": "SUSHISWAP",
         "router": "0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506",
         "factory": "0xc35dadb65012ec5796536bd9864ed8773abc74c4",
         "salt": "e18a34eb0e04b04f7a0ac29a6e80748dca96319b42c54d679cb821dca90c6303",

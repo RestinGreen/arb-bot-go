@@ -1,8 +1,12 @@
 package main
 
 import (
+	"context"
 	"crypto/ecdsa"
+	"log"
 	"main/DoSimpleArb"
+	"main/ReservesFetcher"
+	"math/big"
 	"os"
 
 	"github.com/ethereum/go-ethereum/common"
@@ -10,7 +14,6 @@ import (
 	"github.com/ethereum/go-ethereum/ethclient"
 	"github.com/ethereum/go-ethereum/rpc"
 	"github.com/joho/godotenv"
-	
 )
 
 func initBot() {
@@ -18,7 +21,6 @@ func initBot() {
 	if err != nil {
 		panic(err)
 	}
-	wsEndpoint = os.Getenv("NODE_WS_ENDPOINT")
 	ipcEndpoint = os.Getenv("NODE_IPC_ENDPOINT")
 	dexJson = os.Getenv("DEX_JSON")
 	uniV2Json = os.Getenv("UNIV2_JSON")
@@ -34,7 +36,7 @@ func initBot() {
 
 	initClient()
 	initDB(user, pass, host, port, name)
-	initContract()
+	initContracts()
 	initWallets()
 	
 }
@@ -42,7 +44,7 @@ func initBot() {
 func initClient() {
 	var err error
 
-	baseClient, err = rpc.Dial(wsEndpoint)
+	baseClient, err = rpc.Dial(ipcEndpoint)
 	if err != nil {
 		panic(err)
 	}
@@ -116,18 +118,62 @@ func initWallets() {
 	fromAddress3 = crypto.PubkeyToAddress(*publicKeyECDSA3)
 	fromAddress4 = crypto.PubkeyToAddress(*publicKeyECDSA4)
 
+	nonce00, err := ethClient.PendingNonceAt(context.Background(), fromAddress0)
+	if err != nil {
+		log.Fatal(err)
+		return
+	}
+	nonce0 = big.NewInt(int64(nonce00))
+
+	nonce11, err := ethClient.PendingNonceAt(context.Background(), fromAddress1)
+	if err != nil {
+		log.Fatal(err)
+		return
+	}
+	nonce1 = big.NewInt(int64(nonce11))
+
+	nonce22, err := ethClient.PendingNonceAt(context.Background(), fromAddress2)
+	if err != nil {
+		log.Fatal(err)
+		return
+	}
+	nonce2 = big.NewInt(int64(nonce22))
+
+	nonce33, err := ethClient.PendingNonceAt(context.Background(), fromAddress3)
+	if err != nil {
+		log.Fatal(err)
+		return
+	}
+	nonce3 = big.NewInt(int64(nonce33))
+
+	nonce44, err := ethClient.PendingNonceAt(context.Background(), fromAddress4)
+	if err != nil {
+		log.Fatal(err)
+		return
+	}
+	nonce4 = big.NewInt(int64(nonce44))
+
 
 
 }
 
-func initContract() {
+func initContracts() {
 	var err error
 
-	contractHexAddress := os.Getenv("CONTRACT_ADDRESS")
+	arbContractHexAddress := os.Getenv("ARB_CONTRACT_ADDRESS")
 	
-	contractAddress := common.HexToAddress(contractHexAddress)	
-	contract, err = DoSimpleArb.NewDoSimpleArb(contractAddress, ethClient)
+	arbContractAddress := common.HexToAddress(arbContractHexAddress)	
+	arbContract, err = DoSimpleArb.NewDoSimpleArb(arbContractAddress, ethClient)
 	if err != nil {
 		panic(err)
 	}
+
+	fetcherContractHexAddress := os.Getenv("FETCHER_CONTRACT_ADDRESS")
+
+	fetcherContractAddress := common.HexToAddress(fetcherContractHexAddress)
+	fetcherContract, err = ReservesFetcher.NewReservesFetcher(fetcherContractAddress, ethClient)
+	if err != nil {
+		panic(err)
+	}
+	
 }

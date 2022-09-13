@@ -64,7 +64,6 @@ func getDirectPairReserves(tokenA common.Address, tokenB common.Address, symbolA
 }
 
 
-
 func makeGQLCall(data string) map[string]map[string]string{
 	bytesData := []byte(data)
 	
